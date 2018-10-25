@@ -1,0 +1,65 @@
+# Setup colors
+export CLICOLOR=1
+export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
+
+# Setup editor
+export EDITOR='code';
+
+# N
+export N_PREFIX="$HOME/.n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+
+# Persistent REPL history for node
+export NODE_REPL_HISTORY=~/.node_history;
+
+# Allow 32^3 entries; default is 1000
+export NODE_REPL_HISTORY_SIZE='32768';
+
+# Use Sloppy Mode by Default, matching web browsers
+export NODE_REPL_MODE='sloppy';
+
+# Make python use UTF-8 encoding for output to stdin, stdout, and stderr
+export PYTHONIOENCODING='UTF-8';
+
+# Bash configuration
+export HISTSIZE='32768';
+export HISTFILESIZE="${HISTSIZE}";
+export HISTCONTROL='ignoreboth';
+
+# Languages
+export LANG='en_US.UTF-8';
+export LC_ALL='en_US.UTF-8';
+
+# Highlight section titles in man pages
+export LESS_TERMCAP_md="$fg[yellow]";
+
+# Don't clear the screen after quitting a manual page
+export MANPAGER='less -X';
+
+# Sources for exports
+
+# Path Sources
+path_append $HOME/.dotfiles/bin
+
+# GOPATH
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+path_append $GOBIN
+
+# Python
+export PIP_REQUIRE_VIRTUALENV=true
+export PIP_DOWNLOAD_CACHE=$HOME/Library/Caches/pip
+
+# direnv
+eval "$(direnv hook zsh)"
+
+PROMPT='
+$(_user_host)${_current_dir} $(git_prompt_info) $(virtualenv_prompt_info)
+%{$fg[$CARETCOLOR]%}▶%{$resetcolor%} '
+
+# GPG
+export "GPG_TTY=$(tty)"
+export "SSH_AUTH_SOCK=${HOME}/.gnupg/S.gpg-agent.ssh"
+gpg-connect-agent /bye
+
+# Go
+export GO111MODULE=auto

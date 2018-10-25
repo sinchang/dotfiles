@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# import helpers
+source `dirname $0`/helpers
+
+# Install brew
+function install_brew_packages {
+  if ! type "brew" > /dev/null; then
+    eerr "Brew must be installed first..."; exit 1
+  fi
+
+  einf "Updating brew"
+  brew update
+
+  einf "Tapping brews"
+  cat $TAP_PACKAGES | xargs brew tap
+
+  einf "Installing brew packages"
+  cat $BREW_PACKAGES | xargs brew install
+}
+
+askdo install_brew_packages "Install brew packages?"

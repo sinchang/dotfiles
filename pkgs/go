@@ -1,0 +1,5 @@
+github.com/mitchellh/gox
+github.com/tcnksm/ghr
+github.com/vmware/govmomi/govc
+github.com/adammck/terraform-inventory
+github.com/derekparker/delve/cmd/dlv

@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# import helpers
+source `dirname $0`/helpers
+
+# Install python
+function install_python {
+  if type "pip" > /dev/null; then
+    einf "Python already installed... skipping"
+    return
+  fi
+
+  einf "Installing python"
+  brew install python
+  brew install python3
+
+  einf "Upgrading pip"
+  pip install --upgrade pip
+  pip install --upgrade setuptools
+
+  einf "Installing virtualenv"
+  pip install virtualenv
+  pip install virtualenvwrapper
+
+  rm virtualenvs
+  mkdir virtualenvs
+  ln -sF $DOTFILES/virtualenvs ~/.virtualenvs
+
+  source /usr/local/bin/virtualenvwrapper.sh
+  mkvirtualenv --python=`which python3` venv
+}
+
+askdo install_python "Install python?"

@@ -1,0 +1,60 @@
+.TH dot-install 1 "02 FEB 2017" "version 1.0"
+
+.SH NAME
+dot-install - Install system / application packages
+
+.SH SYNOPSIS
+.B dot
+.RB install
+.RB [type]
+.I package
+
+.SS Types:
+.TP
+.BI brew " package"
+install package using brew
+.TP
+.BI cask " package"
+install package using cask
+.TP
+.BI code " package"
+install package using VSCode
+.TP
+.BI mas " package"
+install package using Mac App Store
+.TP
+.BI pip " package"
+install package using pip
+.TP
+.BI go " package"
+install package using go
+.TP
+.BI npm " package"
+install package using npm
+
+.SH DESCRIPTION
+This command installs a package and updates the relevant dotfile when the command
+succeeds. Packages and modules are installed from various sources, see types for more
+information regarding source of install.
+
+A
+.B package
+is:
+.IP \[bu] 2
+A brew package
+.IP \[bu] 2
+A cask package
+.IP \[bu] 2
+A vscode package
+.IP \[bu] 2
+A Mac App Store app
+.IP \[bu] 2
+A pip package
+.IP \[bu] 2
+A go package
+.IP \[bu] 2
+A npm package
+
+.SH AUTHOR
+
+Nijiko Yonskai <nijikokun@gmail.com>

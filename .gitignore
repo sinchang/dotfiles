@@ -1,0 +1,6 @@
+.DS_Store
+*.bak
+virtualenvs
+shell/Alfred.alfredpreferences/*
+!shell/Alfred.alfredpreferences/preferences
+!shell/Alfred.alfredpreferences/workflows

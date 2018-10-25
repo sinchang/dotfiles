@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# import helpers
+source `dirname $0`/helpers
+
+# Install python packages
+function install_python_packages {
+  if ! type "pip" > /dev/null; then
+    eerr "python must be installed first..."; exit 1
+  fi
+
+  source /usr/local/bin/virtualenvwrapper.sh
+  workon venv
+
+  export PIP_REQUIRE_VIRTUALENV=true
+  export PIP_DOWNLOAD_CACHE=$HOME/Library/Caches/pip
+
+  einf "Installing python packages"
+  cat $PIP_PACKAGES | xargs pip install --upgrade
+}
+
+askdo install_python_packages "Install python packages?"

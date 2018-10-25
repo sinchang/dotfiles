@@ -1,0 +1,5 @@
+pyvmomi
+pylint
+pexpect
+ansible
+jinja2

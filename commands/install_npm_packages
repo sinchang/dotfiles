@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# import helpers
+source `dirname $0`/helpers
+
+# Install npm packages
+function install_npm_packages {
+  if ! type "npm" > /dev/null; then
+    eerr "npm must be installed first..."; exit 1
+  fi
+
+  einf "Installing npm packages"
+  cat $NPM_PACKAGES | xargs npm install -g
+}
+
+askdo install_npm_packages "Install npm packages?"

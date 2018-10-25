@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# import helpers
+source `dirname $0`/helpers
+
+# Install brew
+function install_casks {
+  if ! type "brew" > /dev/null; then
+    eerr "Brew must be installed first..."; exit 1
+  fi
+
+  einf "Updating brew"
+  brew update
+
+  einf "Installing brew cask packages"
+  cat $CASK_PACKAGES | \
+  while read CASK; do
+    printf "Installing $CASK... "
+
+    if brew cask ls --versions $CASK > /dev/null 2>&1; then
+      printf "already installed\n"
+    else
+      printf "\n"
+      brew cask install --upgrade $CASK
+    fi
+  done
+
+}
+
+askdo install_casks "Install brew cask packages?"

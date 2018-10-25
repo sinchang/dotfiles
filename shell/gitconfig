@@ -1,0 +1,42 @@
+[user]
+	name = David Marby
+	email = david@dmarby.se
+    signingkey = david@dmarby.se
+
+[commit]
+    gpgsign = true
+
+[color]
+    ui = auto
+
+[push]
+    default = current
+    followTags = true
+
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = red
+
+[gpg]
+    program = /usr/local/bin/gpg
+
+[url "git@github.com:"]
+    pushInsteadOf = "https://github.com/"
+
+[core]
+    editor = code --wait
+
+[diff]
+    tool = vscode-diff
+
+[difftool]
+    prompt = false
+
+[difftool "vscode-diff"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process

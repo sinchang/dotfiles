@@ -1,0 +1,60 @@
+#!/bin/sh
+
+# import helpers
+source `dirname $0`/helpers
+
+# Install brew
+function setup_env {
+  einf "Linking shell configs"
+  link $DOTFILES_SHELL/functions $HOME/.functions.sh
+  link $DOTFILES_SHELL/exports $HOME/.exports.sh
+  link $DOTFILES_SHELL/aliases $HOME/.aliases.sh
+  link $DOTFILES_SHELL/antigen $HOME/.antigen.sh
+  link $DOTFILES_SHELL/profile $HOME/.profile
+  link $DOTFILES_SHELL/zshrc $HOME/.zshrc
+
+  einf "Linking editor configs"
+  # VSCode Configuration File, attempt to remove existing settings and link ours
+  mv $HOME/Library/Application\ Support/Code/User/settings.json $HOME/Library/Application\ Support/Code/User/settings.json.bak
+  link $DOTFILES_EDITORS/vscode.json $HOME/Library/Application\ Support/Code/User/settings.json
+
+  einf "Linking github configs"
+  link $DOTFILES_SHELL/gitconfig $HOME/.gitconfig
+
+  einf "Linking karabiner config"
+  mkdir -p $HOME/.config/karabiner
+  link $DOTFILES_SHELL/karabiner.json $HOME/.config/karabiner/karabiner.json
+
+  einf "Linking ssh_config"
+  mkdir -p $HOME/.ssh
+  link $DOTFILES_SHELL/ssh_config $HOME/.ssh/config
+
+  einf "Linking spectacle config"
+  link $DOTFILES_SHELL/spectacle.json $HOME/Library/Application\ Support/Spectacle/Shortcuts.json
+
+  einf "Setting up gnupg"
+  mkdir -p $HOME/.gnupg
+  link $DOTFILES_SHELL/gpg_conf $HOME/.gnupg/gpg.conf
+  link $DOTFILES_SHELL/gpg_agent_conf $HOME/.gnupg/gpg-agent.conf
+
+  einf "Setting up Projects directory"
+  mkdir -p $HOME/Projects
+
+  einf "Setting up gopath"
+  mkdir -p $HOME/go/src/github.com
+  if [ ! -L $HOME/go/src/github.com/DMarby ]; then
+    link $HOME/Projects $HOME/go/src/github.com/DMarby
+  fi
+
+  einf "Linking ovftool"
+  link /Applications/VMware\ OVF\ Tool/ovftool /usr/local/bin/ovftool
+
+  einf "Changing shell to zsh"
+  sudo -v
+  echo '/usr/local/bin/zsh' | sudo tee -a /etc/shells
+  chsh -s /usr/local/bin/zsh
+
+  einf "Open iTerm 2, set the custom configuration folder to ~/.dotfiles/shell"
+}
+
+askdo setup_env "Setup environment?"

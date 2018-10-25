@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# source helpers file
+source `dirname $0`/helpers
+
+# Install brew
+function uninstall_env {
+  einf "Unlinking shell configs"
+  rm -f $HOME/.functions.sh
+  rm -f $HOME/.exports.sh
+  rm -f $HOME/.aliases.sh
+  rm -f $HOME/.antigen.sh
+  rm -f $HOME/.profile
+  rn -f $HOME/.zshrc
+
+  einf "Unlinking editor configs"
+  rm -f $HOME/Library/Application\ Support/Code/User/settings.json
+
+  einf "Unlinking github configs"
+  rm -f $HOME/.gitconfig
+
+  einf "Unlinking karabiner"
+  rm -f $HOME/.config/karabiner/karabiner.json
+
+  einf "Unlinking ssh_config"
+  rm -f $HOME/.ssh/config
+
+  einf "Unlinking spectacle config"
+  rm -f $HOME/Library/Application\ Support/Spectacle/Shortcuts.json
+
+  einf "Unlinking gnupg"
+  rm -f $HOME/.gnupg/gpg.conf
+  rm -f $HOME/.gnupg/gpg-agent.conf
+
+  einf "Removing gopath"
+  rm -f $HOME/go/src/github.com/DMarby
+
+  einf "Removing ovftool"
+  rm -f /usr/local/bin/ovftool
+
+  einf "Changing shell back to bash"
+  chsh -s /bin/bash
+}
+
+askdo uninstall_env "Unlink environment files?"

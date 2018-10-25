@@ -1,0 +1,97 @@
+// 将设置放入此文件中以覆盖默认设置
+{
+  "editor.fontSize": 14,
+  "editor.wordWrap": "on",
+  "editor.fontLigatures": true,
+  "editor.tabSize": 2,
+  "emmet.syntaxProfiles": {
+    "vue-html": "html",
+    "vue": "html",
+    "art": "html"
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "html",
+    "vue",
+    "typescript",
+    "typescriptreact"
+  ],
+  "editor.fontFamily": "Courier Prime Code,  OperatorMono-Light, Menlo, Monaco, 'Courier New', monospace",
+  "workbench.iconTheme": "eq-material-theme-icons-palenight",
+  "terminal.integrated.fontSize": 14,
+  "files.associations": {
+    "*.vue": "vue",
+    "*.art": "html",
+    ".gpmrc": "json",
+    "*.html": "html"
+  },
+  "window.zoomLevel": 0,
+  "python.linting.pylintArgs": ["--errors-only"],
+  "typescript.check.npmIsInstalled": false,
+  "git.enableSmartCommit": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/tmp": true,
+    "**/bower_components": true
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/tmp/**": true,
+    "**/bower_components/**": true,
+    "**/dist/**": true
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "element-helper.version": "2.0",
+  "git.confirmSync": false,
+  "files.autoSave": "afterDelay",
+  "workbench.colorCustomizations": {},
+  "explorer.openEditors.visible": 0,
+  // "workbench.statusBar.visible": false,
+  "editor.minimap.enabled": false,
+  // "workbench.activityBar.visible": false,
+  "git.autofetch": true,
+  "advancedNewFile.exclude": {
+    "node_modules": true,
+    "node_modules_electron": true,
+    "dev": true,
+    "dist": true
+  },
+  "advancedNewFile.showInformationMessages": true,
+  "advancedNewFile.convenienceOptions": ["last", "current", "root"],
+  "code-runner.executorMap": {
+    "javascript": "node",
+    "python": "python3.6",
+    "perl": "perl",
+    "go": "go run"
+  },
+  "explorer.confirmDragAndDrop": false,
+  "eslint.autoFixOnSave": true,
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.colorTheme": "Material Theme Palenight",
+  "gpm.rootPath": ["~/gpm"],
+  "explorer.confirmDelete": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.enablePreview": false,
+  "terminal.integrated.rendererType": "dom",
+  "emmet.includeLanguages": {
+    "nunjucks": "html"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "breadcrumbs.enabled": false,
+  "python.linting.pylintPath": "/usr/local/bin/pylint"
+}

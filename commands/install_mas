@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# import helpers
+source `dirname $0`/helpers
+
+# Install mas
+function install_mas {
+  if ! type "mas" > /dev/null; then
+    eerr "MAS must be installed first..."; exit 1
+  fi
+
+  einf "Installing Mac App Store packages"
+  cat $MAS_PACKAGES | sed 's/#.*$//' | sed '/^$/d' | xargs mas install
+}
+
+askdo install_mas "Install Mac App Store packages?"
